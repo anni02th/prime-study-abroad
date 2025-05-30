@@ -1,28 +1,23 @@
-import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import DashboardScreen from '../screens/DashboardScreen';
-import LoginScreen from '../screens/LoginScreen';
-import StudentProfileScreen from '../screens/StudentProfileScreen';
-import ManageStudentsScreen from '../screens/ManageStudentsScreen';
+import { createStackNavigator } from "@react-navigation/stack"
+import LoginScreen from "../screens/auth/LoginScreen"
+import SignupScreen from "../screens/auth/SignupScreen"
+import ForgotPasswordScreen from "../screens/auth/ForgotPasswordScreen"
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator()
 
-export default function AppNavigator() {
+const AuthNavigator = () => {
   return (
-    <Drawer.Navigator
+    <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{
         headerShown: false,
-        drawerType: 'slide',
-        overlayColor: 'transparent',
-        drawerStyle: { backgroundColor: '#1e293b', width: 240 },
-        sceneContainerStyle: { backgroundColor: '#f1f5f9' }
       }}
     >
-      <Drawer.Screen name="Login" component={LoginScreen} />
-      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
-      <Drawer.Screen name="ManageStudents" component={ManageStudentsScreen} />
-      <Drawer.Screen name="StudentProfile" component={StudentProfileScreen} />
-    </Drawer.Navigator>
-  );
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+    </Stack.Navigator>
+  )
 }
+
+export default AuthNavigator
